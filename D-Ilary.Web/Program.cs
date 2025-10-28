@@ -1,4 +1,8 @@
 using D_Ilary.Web.Data;
+using D_Ilary.Web.Interfaces.IRepositories;
+using D_Ilary.Web.Interfaces.IServices;
+using D_Ilary.Web.Repository;
+using D_Ilary.Web.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,14 @@ builder.Services.AddControllersWithViews();
 // Configuraracion EF con supabase
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+builder.Services.AddScoped<IEquipmentService, EquipmentService>();
+
+
+
+
+
 
 
 var app = builder.Build();

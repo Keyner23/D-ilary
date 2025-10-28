@@ -6,9 +6,10 @@ public class Equipment
     public string Name { get; set; }
     public decimal priceHour { get; set; }
 
-    public Equipment(Guid id, string name, decimal priceHour)
+    public Equipment() {}
+    public Equipment(string name, decimal priceHour)
     {
-        Id = id;
+        Id=Guid.NewGuid();
         Name = name;
         this.priceHour = priceHour;
     }

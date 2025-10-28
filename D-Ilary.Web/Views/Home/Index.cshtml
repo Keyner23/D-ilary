@@ -1,8 +1,21 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="d-flex flex-column justify-content-center align-items-center vh-100 text-center" 
+     style="background: linear-gradient(135deg, #007bff 0%, #00bcd4 100%); color: white;">
+
+
+    <h1 class="display-3 fw-bold text-primary mb-4">
+        Bienvenido a <span class="text-dark">D'Ilary</span>
+    </h1>
+
+    <p class="lead text-secondary mb-5">
+        Sistema de gestión de Ferreterias— simple, moderno y eficiente.
+    </p>
+
+    <a asp-controller="Equipment" asp-action="Index" class="btn btn-lg btn-primary px-5 py-3 rounded-pill shadow-lg">
+        <i class="bi bi-tools me-2"></i> Ir a Equipos
+    </a>
+
 </div>
