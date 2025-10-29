@@ -1,0 +1,31 @@
+@model D_Ilary.Web.Data.Entities.Equipment
+
+@{
+    ViewData["Title"] = "Carga Excel";
+}
+
+<div class="container text-center mt-5">
+    <h2 class="mb-4">Carga Excel</h2>
+
+    <form asp-action="UploadExcel" asp-controller="Equipment" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <input type="file" name="file" accept=".xlsx" class="form-control form-control-lg" required />
+        </div>
+        
+        <button type="submit" class="btn btn-success btn-lg shadow">
+            <i class="bi bi-cloud-upload"></i> Subir Excel
+        </button>
+        
+    </form>
+    <div class="text-center mt-4">
+        <a asp-controller="Equipment" asp-action="Index" class="text-secondary text-decoration-none">
+            <i class="bi bi-arrow-left-circle"></i> Volver al listado
+        </a>
+    </div>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-@ViewBag.AlertType mt-4" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+</div>
