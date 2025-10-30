@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using D_Ilary.Web.Data;
 using D_Ilary.Web.Data.Entities;
 using D_Ilary.Web.Interfaces.IServices;
+using Microsoft.AspNetCore.Authorization;
 
-namespace D_Ilary.Web.Controllers
-{
+
+namespace D_Ilary.Web.Controllers;
+
+[Authorize(Roles = "Admin")]
     public class EquipmentController : Controller
     {
         private readonly IEquipmentService _service;
@@ -72,4 +68,4 @@ namespace D_Ilary.Web.Controllers
         }
 
     }
-}
+

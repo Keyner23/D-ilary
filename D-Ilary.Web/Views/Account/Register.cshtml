@@ -1,0 +1,47 @@
+@model D_Ilary.Web.ViewModels.RegisterViewModel
+
+<div class="d-flex justify-content-center align-items-center vh-100" 
+     style="background: linear-gradient(135deg, #f8f9fa 0%, #dee2e6 100%);
+            background-image: url('https://www.transparenttextures.com/patterns/metal-texture.png');
+            background-size: cover;">
+
+    <div class="card shadow-lg border-0 rounded-4 p-4" style="width: 420px; background-color: rgba(255, 255, 255, 0.95);">
+        <div class="text-center mb-4">
+            <i class="bi bi-person-plus display-4 text-warning"></i>
+            <h2 class="fw-bold mt-2" style="color: #ff7f00;">Crear Cuenta</h2>
+            <p class="text-muted small mb-0">Regístrate para acceder a D'Ilary</p>
+        </div>
+
+        <form asp-action="Register" method="post">
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="fw-semibold text-secondary"></label>
+                <input asp-for="Email" class="form-control form-control-lg rounded-3" placeholder="tu@correo.com" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="fw-semibold text-secondary"></label>
+                <input asp-for="Password" class="form-control form-control-lg rounded-3" type="password" placeholder="********" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="ConfirmPassword" class="fw-semibold text-secondary"></label>
+                <input asp-for="ConfirmPassword" class="form-control form-control-lg rounded-3" type="password" placeholder="********" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+            </div>
+
+            <button type="submit" 
+                    class="btn btn-lg w-100 shadow rounded-pill" 
+                    style="background-color: #ff7f00; color: white; font-weight: 600; border: none;">
+                <i class="bi bi-person-check me-2"></i> Registrarse
+            </button>
+        </form>
+
+        <div class="text-center mt-4">
+            <small class="text-muted">¿Ya tienes cuenta?
+                <a asp-action="Login" class="fw-bold text-decoration-none" style="color: #ff7f00;">Inicia sesión</a>
+            </small>
+        </div>
+    </div>
+</div>

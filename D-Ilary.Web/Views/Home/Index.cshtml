@@ -2,20 +2,39 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="d-flex flex-column justify-content-center align-items-center vh-100 text-center" 
-     style="background: linear-gradient(135deg, #007bff 0%, #00bcd4 100%); color: white;">
+<div class="d-flex flex-column justify-content-center align-items-center vh-100 text-center"
+     style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            background-image: url('https://www.transparenttextures.com/patterns/metal-texture.png');
+            background-size: cover;">
 
+    <div class="p-5 rounded-4 shadow-lg" 
+         style="background: rgba(255,255,255,0.9); max-width: 600px;">
 
-    <h1 class="display-3 fw-bold text-primary mb-4">
-        Bienvenido a <span class="text-dark">D'Ilary</span>
-    </h1>
+        <div class="mb-4">
+            <i class="bi bi-gear-fill text-warning display-1"></i>
+        </div>
 
-    <p class="lead text-secondary mb-5">
-        Sistema de gestión de Ferreterias— simple, moderno y eficiente.
-    </p>
+        <h1 class="display-4 fw-bold mb-3" style="color: #ff7f00;">
+            Bienvenido a <span class="text-dark">D'Ilary</span>
+        </h1>
 
-    <a asp-controller="Equipment" asp-action="Index" class="btn btn-lg btn-primary px-5 py-3 rounded-pill shadow-lg">
-        <i class="bi bi-tools me-2"></i> Ir a Equipos
-    </a>
+        <p class="lead text-secondary mb-4">
+            Sistema de gestión para ferreterías — práctico, robusto y eficiente.
+        </p>
 
+        <a asp-controller="Account" asp-action="Login"
+           class="btn btn-lg px-5 py-3 rounded-pill shadow-lg"
+           style="background-color: #ff7f00; color: white; font-weight: 600; border: none;">
+            <i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión
+        </a>
+
+        <div class="mt-4">
+            <small class="text-muted">¿No tienes cuenta?
+                <a asp-controller="Account" asp-action="Register" class="text-decoration-none fw-bold" style="color: #ff7f00;">
+                    Regístrate aquí
+                </a>
+            </small>
+        </div>
+    </div>
 </div>
