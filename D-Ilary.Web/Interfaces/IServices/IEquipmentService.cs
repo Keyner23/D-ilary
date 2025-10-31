@@ -8,4 +8,5 @@ public interface IEquipmentService
     void CreateEquipment(Equipment equipment);
     Equipment? GetById(int id);
     Task<int> ProcessExcelAsync(IFormFile file);
+    Task DeleteEquipmentAsync(Guid id);
 }

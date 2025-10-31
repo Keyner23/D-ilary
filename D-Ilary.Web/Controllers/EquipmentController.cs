@@ -36,7 +36,15 @@ namespace D_Ilary.Web.Controllers;
             _service.CreateEquipment(equipment);
             return View("Create");
         }
-
+        
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _service.DeleteEquipmentAsync(id);
+            return RedirectToAction("Index");
+        }
+        
+        
         public IActionResult Upload()
         {
             return View();

@@ -14,6 +14,15 @@ public class EquipmentRepository: IEquipmentRepository
         _context = context;
     }
     
+    public void Delete(Guid id)
+    {
+        var equipment = _context.Equipments.Find(id);
+        if (equipment != null)
+        {
+            _context.Equipments.Remove(equipment);
+            _context.SaveChanges();
+        }
+    }
     
     public List<Equipment> GetAll()
     {

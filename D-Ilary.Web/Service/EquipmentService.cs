@@ -19,13 +19,18 @@ public class EquipmentService:IEquipmentService
     {
         return _repository.GetAll();
     }
-
+   
     
     public void CreateEquipment(Equipment equipment)
     {
         _repository.Add(equipment);
     }
-
+    
+    public async Task DeleteEquipmentAsync(Guid id)
+    {
+        await Task.Run(() => _repository.Delete(id));
+    }
+    
     public Equipment? GetById(int id)
     {
         throw new NotImplementedException();
