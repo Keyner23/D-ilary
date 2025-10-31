@@ -51,7 +51,7 @@ public class EquipmentService:IEquipmentService
 
             var headerRow = range.FirstRowUsed();
 
-            // ✅ Validar nombres de columnas
+            // Validar nombres de columnas
             string col1 = headerRow.Cell(1).GetValue<string>().Trim().ToLower();
             string col2 = headerRow.Cell(2).GetValue<string>().Trim().ToLower();
 
@@ -60,7 +60,7 @@ public class EquipmentService:IEquipmentService
                 throw new Exception("El archivo Excel debe tener las columnas: 'Name' y 'PriceHour' en la primera fila.");
             }
 
-            // ✅ Procesar filas
+            // Procesar filas
             foreach (var row in range.RowsUsed().Skip(1))
             {
                 try

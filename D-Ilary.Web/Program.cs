@@ -73,36 +73,36 @@ using (var scope = app.Services.CreateScope())
         }
     }
 
-    var adminEmail = "admin@example.com";
-    var adminPassword = "Admin123!"; 
-
-    var adminUser = await userManager.FindByEmailAsync(adminEmail);
-    if (adminUser == null)
-    {
-        var newAdmin = new IdentityUser
-        {
-            UserName = adminEmail,
-            Email = adminEmail,
-            EmailConfirmed = true
-        };
-
-        var result = await userManager.CreateAsync(newAdmin, adminPassword);
-        if (result.Succeeded)
-        {
-            await userManager.AddToRoleAsync(newAdmin, "Admin");
-            Console.WriteLine("✅ Usuario admin creado correctamente");
-        }
-        else
-        {
-            Console.WriteLine("❌ Error creando admin:");
-            foreach (var error in result.Errors)
-                Console.WriteLine($"   - {error.Description}");
-        }
-    }
-    else
-    {
-        Console.WriteLine("ℹ️ Usuario admin ya existe");
-    }
+    // var adminEmail = "admin@example.com";
+    // var adminPassword = "Admin123!"; 
+    //
+    // var adminUser = await userManager.FindByEmailAsync(adminEmail);
+    // if (adminUser == null)
+    // {
+    //     var newAdmin = new IdentityUser
+    //     {
+    //         UserName = adminEmail,
+    //         Email = adminEmail,
+    //         EmailConfirmed = true
+    //     };
+    //
+    //     var result = await userManager.CreateAsync(newAdmin, adminPassword);
+    //     if (result.Succeeded)
+    //     {
+    //         await userManager.AddToRoleAsync(newAdmin, "Admin");
+    //         Console.WriteLine("✅ Usuario admin creado correctamente");
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("❌ Error creando admin:");
+    //         foreach (var error in result.Errors)
+    //             Console.WriteLine($"   - {error.Description}");
+    //     }
+    // }
+    // else
+    // {
+    //     Console.WriteLine("ℹ️ Usuario admin ya existe");
+    // }
 }
 
 app.Run();
