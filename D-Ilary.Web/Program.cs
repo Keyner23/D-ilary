@@ -19,6 +19,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
 builder.Services.AddScoped<IEquipmentService, EquipmentService>();
 
+builder.Services.AddScoped<ISaleRepository, SaleRepository>(); 
+builder.Services.AddScoped<ISaleService, SaleService>();
+builder.Services.AddScoped<IReceiptService, ReceiptService>();
+
+
 
 // Agrega Identity con EntityFramework
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

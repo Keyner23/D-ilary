@@ -1,7 +1,7 @@
-@model D_Ilary.Web.Data.Entities.Equipment
+@model D_Ilary.Web.Data.Entities.Sale
 
 @{
-    ViewData["Title"] = "Registrar Equipo";
+    ViewData["Title"] = "Registrar Venta";
     Layout = null;
 }
 
@@ -24,14 +24,13 @@
                 </h3>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2">
-                        <a asp-controller="Equipment" asp-action="Index" class="nav-link active text-warning fw-semibold d-flex align-items-center">
+                        <a asp-controller="Equipment" asp-action="Index" class="nav-link text-warning fw-semibold d-flex align-items-center">
                             <i class="bi bi-tools me-2"></i> Equipos
                         </a>
                     </li>
 
                     <hr class="text-secondary" />
 
-                    <!-- 🔸 Muevenos aquí las acciones -->
                     <li class="nav-item mb-2">
                         <a asp-controller="Equipment" asp-action="Upload"
                            class="btn btn-outline-warning w-100 rounded-pill fw-semibold text-start">
@@ -46,14 +45,11 @@
                     </li>
                 </ul>
                 
-                <br/>
-                <br/>
-                <br/>
+                <br/><br/><br/>
                 
                 <ul class="nav flex-column">
-                    
                     <li class="nav-item mb-2">
-                        <a asp-controller="" asp-action="" class="nav-link active text-warning fw-semibold d-flex align-items-center">
+                        <a class="nav-link active text-warning fw-semibold d-flex align-items-center">
                             <i class="bi bi-person-circle me-2"></i> Clientes
                         </a>
                     </li>
@@ -61,26 +57,23 @@
                     <hr class="text-secondary"/>
                     
                     <li class="nav-item mb-2">
-                        <a asp-controller="" asp-action=""
-                           class="btn btn-outline-warning w-100 rounded-pill fw-semibold text-start">
+                        <a class="btn btn-outline-warning w-100 rounded-pill fw-semibold text-start">
                             <i class="bi bi-person-fill-add me-2"></i>Crear Cliente
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a asp-controller="" asp-action=""
-                           class="btn btn-warning w-100 text-white rounded-pill fw-semibold text-start">
+                        <a class="btn btn-warning w-100 text-white rounded-pill fw-semibold text-start">
                             <i class="bi bi-person-video3 me-2"></i> Ver Clientes
                         </a>
                     </li>
                 </ul>
-                <br/>
-                <br/>
-                <br/>
+
+                <br/><br/><br/>
                 
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2">
-                        <a asp-controller="" asp-action="" class="nav-link active text-warning fw-semibold d-flex align-items-center">
+                        <a class="nav-link active text-warning fw-semibold d-flex align-items-center">
                             <i class="bi bi-receipt me-2"></i> Ventas
                         </a>
                     </li>
@@ -89,14 +82,13 @@
 
                     <li class="nav-item mb-2">
                         <a asp-controller="Sale" asp-action="Create"
-                           class="btn btn-outline-warning w-100 rounded-pill fw-semibold text-start">
+                           class="btn btn-warning w-100 text-white rounded-pill fw-semibold text-start">
                             <i class="bi bi-cart-plus me-2"></i> Crear Venta
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a asp-controller="" asp-action=""
-                           class="btn btn-warning w-100 text-white rounded-pill fw-semibold text-start">
+                        <a class="btn btn-outline-warning w-100 rounded-pill fw-semibold text-start">
                             <i class="bi bi-bag-check-fill me-2"></i> Imprimir Ventas
                         </a>
                     </li>
@@ -117,7 +109,7 @@
             <nav class="navbar navbar-light bg-white shadow-sm px-4 py-3">
                 <div class="d-flex justify-content-between w-100 align-items-center">
                     <h4 class="fw-bold mb-0 text-dark">
-                        <i class="bi bi-tools text-warning me-2"></i> Registrar Nuevo Equipo
+                        <i class="bi bi-receipt text-warning me-2"></i> Registrar Venta
                     </h4>
                     <a asp-controller="Equipment" asp-action="Index"
                        class="btn btn-outline-secondary rounded-pill">
@@ -133,39 +125,63 @@
                         <div class="card shadow-lg border-0 rounded-4">
                             <div class="card-body p-5">
                                 <h2 class="text-center fw-bold text-secondary mb-4">
-                                    <i class="bi bi-gear-fill text-warning"></i> Crear Equipo
+                                    <i class="bi bi-cart-check-fill text-warning"></i> Nueva Venta
                                 </h2>
                                 <hr class="mb-4" />
 
-                                <form asp-controller="Equipment" asp-action="CreateEquipment" method="post">
+                                <form asp-controller="Sale" asp-action="Create" method="post">
                                     <div class="mb-3">
-                                        <label asp-for="Name" class="form-label fw-semibold">Nombre del equipo</label>
-                                        <input asp-for="Name" class="form-control form-control-lg rounded-3 shadow-sm"
-                                               placeholder="Ej: Compresor de aire" required />
-                                        <span asp-validation-for="Name" class="text-danger small"></span>
+                                        <label asp-for="EquipmentId" class="form-label fw-semibold">Seleccionar equipo</label>
+                                        <select asp-for="EquipmentId" class="form-select form-select-lg rounded-3 shadow-sm">
+                                            <option value="">-- Seleccione un equipo --</option>
+                                            @* Aquí deberías llenar el dropdown desde el ViewBag *@
+                                            @if (ViewBag.Equipments != null)
+                                            {
+                                                foreach (var eq in ViewBag.Equipments)
+                                                {
+                                                    <option value="@eq.Id">@eq.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span asp-validation-for="EquipmentId" class="text-danger small"></span>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label asp-for="ProductId" class="form-label fw-semibold">Seleccionar producto (opcional)</label>
+                                        <select asp-for="ProductId" class="form-select form-select-lg rounded-3 shadow-sm">
+                                            <option value="">-- Seleccione un producto --</option>
+                                            @if (ViewBag.Products != null)
+                                            {
+                                                foreach (var p in ViewBag.Products)
+                                                {
+                                                    <option value="@p.Id">@p.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span asp-validation-for="ProductId" class="text-danger small"></span>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label asp-for="Total" class="form-label fw-semibold">Total</label>
+                                        <input asp-for="Total" type="number" step="0.01"
+                                               class="form-control form-control-lg rounded-3 shadow-sm"
+                                               placeholder="Ej: 120000" required />
+                                        <span asp-validation-for="Total" class="text-danger small"></span>
                                     </div>
 
                                     <div class="mb-4">
-                                        <label asp-for="priceHour" class="form-label fw-semibold">Precio por hora</label>
-                                        <input asp-for="priceHour" type="number" step="0.01"
-                                               class="form-control form-control-lg rounded-3 shadow-sm"
-                                               placeholder="Ej: 15000" required />
-                                        <span asp-validation-for="priceHour" class="text-danger small"></span>
+                                        <label asp-for="SaleDate" class="form-label fw-semibold">Fecha de venta</label>
+                                        <input asp-for="SaleDate" type="datetime-local" class="form-control form-control-lg rounded-3 shadow-sm"
+                                               value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly />
                                     </div>
 
                                     <div class="d-grid">
                                         <button type="submit" class="btn btn-warning text-white btn-lg rounded-pill shadow-sm">
-                                            <i class="bi bi-check-circle-fill me-2"></i> Crear Equipo
+                                            <i class="bi bi-check-circle-fill me-2"></i> Registrar Venta
                                         </button>
                                     </div>
                                 </form>
-                                @* *@
-                                @* <div class="text-center mt-4"> *@
-                                @*     <a asp-controller="Equipment" asp-action="Index" *@
-                                @*        class="text-secondary text-decoration-none"> *@
-                                @*         <i class="bi bi-arrow-left-circle"></i> Volver al listado *@
-                                @*     </a> *@
-                                @* </div> *@
+
                             </div>
                         </div>
                     </div>

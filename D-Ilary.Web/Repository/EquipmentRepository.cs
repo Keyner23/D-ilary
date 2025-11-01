@@ -8,7 +8,7 @@ public class EquipmentRepository: IEquipmentRepository
 {
     
     private readonly ApplicationDbContext _context;
-//carga de constructores con la bd
+
     public EquipmentRepository(ApplicationDbContext context)
     {
         _context = context;

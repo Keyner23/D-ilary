@@ -74,6 +74,33 @@
                         </a>
                     </li>
                 </ul>
+                <br/>
+                <br/>
+                <br/>
+                
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a asp-controller="" asp-action="" class="nav-link active text-warning fw-semibold d-flex align-items-center">
+                            <i class="bi bi-receipt me-2"></i> Ventas
+                        </a>
+                    </li>
+
+                    <hr class="text-secondary" />
+
+                    <li class="nav-item mb-2">
+                        <a asp-controller="Sale" asp-action="Create"
+                           class="btn btn-outline-warning w-100 rounded-pill fw-semibold text-start">
+                            <i class="bi bi-cart-plus me-2"></i> Crear Venta
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-controller="Sale" asp-action="Create"
+                           class="btn btn-warning w-100 text-white rounded-pill fw-semibold text-start">
+                            <i class="bi bi-bag-check-fill me-2"></i> Imprimir Ventas
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <div class="text-center mt-4">
